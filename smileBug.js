@@ -75,3 +75,15 @@ var EventUtil = {
 		}
 	}
 };
+
+function isArray(value){ //判断数组，注意 instanceof 的局限性
+	return Object.prototype.toString.call(value) == "[object Array]";
+}
+// 同样，也可以基于这一思路来测试 某个值是不是原生函数或正则表达式：
+function isFunction(value){
+	return Object.prototype.toString.call(value) == "[object Function]";
+}
+
+function isRegExp(value){
+	return Object.prototype.toString.call(value) =="[object RegExp]";
+}
