@@ -76,6 +76,8 @@ var EventUtil = {
 	}
 };
 
+
+//类型判断
 function isArray(value){ //判断数组，注意 instanceof 的局限性
 	return Object.prototype.toString.call(value) == "[object Array]";
 }
@@ -86,4 +88,23 @@ function isFunction(value){
 
 function isRegExp(value){
 	return Object.prototype.toString.call(value) =="[object RegExp]";
+}
+
+
+//数组
+
+//数组升序排列，并返回该数组
+function promote(arr){
+	arr.sort(function(value1,value2){			//sort(),两个值的比较，传入sort的参数为正，则互换两数值位置，为负，则不变。
+		return value1 - value2;
+	});
+	return arr;
+}
+
+//数组降序排列，并返回该数组
+function decline(arr){
+	arr.sort(function(value1,value2){
+		return value2 - value1;
+	})
+	return arr;
 }
