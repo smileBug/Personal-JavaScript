@@ -96,7 +96,7 @@ function isRegExp(value){
 //数组升序排列，并返回该数组
 function promote(arr){
 	arr.sort(function(value1,value2){			//sort(),两个值的比较，传入sort的参数为正，则互换两数值位置，为负，则不变。
-		return value1 - value2;
+		return value1 > value2 ? 1 :-1;
 	});
 	return arr;
 }
@@ -104,7 +104,7 @@ function promote(arr){
 //数组降序排列，并返回该数组
 function decline(arr){
 	arr.sort(function(value1,value2){
-		return value2 - value1;
+		return value2 > value1 ? 1 :-1;
 	})
 	return arr;
 }
