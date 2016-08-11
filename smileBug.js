@@ -108,3 +108,9 @@ function decline(arr){
 	})
 	return arr;
 }
+
+
+//判断属性是否来自于其原型对象-->判断name属性是否来自object对象的原型对象
+function getPrototypeProperty(object,name){
+		return !object.hasOwnProperty(name) && (name in object);
+	}
