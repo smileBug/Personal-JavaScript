@@ -1,5 +1,5 @@
 // smileBug的脚本库
-var smilebug = {
+var sb = {
 	//事件
 	EventUtil : {
 
@@ -114,6 +114,14 @@ var smilebug = {
 		return arr;
 	},
 
+	//创建XMLHttpRequest对象实例
+	createXHR : function(){
+		if (window.XMLHttpRequest) {
+			return new XMLHttpRequest();
+		} else {
+			return new ActionXObject("Microsoft.XMLHTTP"); //IE6,IE5..
+		}
+	},
 
 }
 
