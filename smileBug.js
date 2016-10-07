@@ -96,6 +96,11 @@ var sb = {
 		return !object.hasOwnProperty(name) && (name in object);
 	},
 
+  typeOf : function(value){
+    var arr = Object.prototype.toString.call(val);
+	  return arr.slice(8,-1);
+  },
+
 	//数组
 
 	//数组升序排列，并返回该数组
