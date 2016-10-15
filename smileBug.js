@@ -91,15 +91,15 @@ var sb = {
 		return Object.prototype.toString.call(value) =="[object RegExp]";
 	},
 
-	//判断属性是否来自于其原型对象-->判断name属性是否来自object对象的原型对象
-	getPrototypeProperty : function(object,name){
-		return !object.hasOwnProperty(name) && (name in object);
-	},
-
   typeOf : function(value){
     var arr = Object.prototype.toString.call(val);
 	  return arr.slice(8,-1);
   },
+
+	//判断属性是否来自于其原型对象-->判断name属性是否来自object对象的原型对象
+	getPrototypeProperty : function(object,name){
+		return !object.hasOwnProperty(name) && (name in object);
+	},
 
 	//数组
 
@@ -119,14 +119,36 @@ var sb = {
 		return arr;
 	},
 
-	//创建XMLHttpRequest对象实例
-	createXHR : function(){
-		if (window.XMLHttpRequest) {
-			return new XMLHttpRequest();
-		} else {
-			return new ActionXObject("Microsoft.XMLHTTP"); //IE6,IE5..
-		}
+
+  //各个类型的深复制
+  clone : function(val){
+	  var arr = Object.prototype.toString.call(val);
+	  var test = arr.slice(8,-1);
+	  switch(test){
+
+	  	//如果是array数组类型，则创建一个空数组，按顺序挨个把原数组的值复制过去。
+	  	case "Array":
+	  		var oarr = [];
+	  		for (var i = 0; i < val.length; i++) {
+	  			oarr.push(val[i]);
+	  		}
+	  		return oarr;
+	  		break;
+	  	//如果是object对象，则创建一个空对象，将原对象的属性挨个复制过去
+	  	case "Object":
+	  	  var obj = {};
+	  	  for(key in val){
+	  	  	obj.key = val.key;
+	  	  }
+	  	  return obj;
+	  	  break;
+	  	 //如果是string、number或boolean类型，则直接复制其值；
+	  	default:
+	  	  return val;
+	  	  break;
+  	}
 	},
+
 
 }
 
